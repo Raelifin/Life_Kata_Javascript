@@ -12,6 +12,7 @@ function AutomatonController() {
 		}
 		resultHTML += '</div>';
 		resultHTML += '<button id="resetAutomatonButton">Reset</button>';
+		resultHTML += '<button id="stepAutomatonButton">Step</button>';
 		resultHTML += '</div>';
 		return resultHTML;
 	}

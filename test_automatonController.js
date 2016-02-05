@@ -17,6 +17,7 @@ QUnit.test("Renderer can create automatonBox div with internal elements", functi
 	assert.equal($('#automatonBox h1').length, 1);
 	assert.equal($('#automatonBox #automatonCells').length, 1);
 	assert.equal($('#automatonBox #resetAutomatonButton').length, 1);
+	assert.equal($('#automatonBox #stepAutomatonButton').length, 1);
 	assert.equal($('#automatonBox .row').length, 6);
 	assert.equal($('#automatonBox .cell').length, 48);
 	$('#automatonBox').remove();
