@@ -17,10 +17,7 @@ function lifeNeighbors(board, x, y) {
 }
 
 function lifeNextCell(oldState, neighbors) {
-	if (oldState in lifeRules) {
-		return lifeRules[oldState](neighbors);
-	}
-	return oldState;
+	return (oldState in lifeRules) ? lifeRules[oldState](neighbors) : oldState;
 }
 
 function lifeNextBoard(board) {
