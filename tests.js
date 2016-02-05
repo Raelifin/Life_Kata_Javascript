@@ -33,3 +33,10 @@ QUnit.test("Sample board has expected neighborhoods", function( assert ) {
 	assert.ok(neighbors.filter(x=>x==a).length == 2);
 	assert.ok(neighbors.filter(x=>x==d).length == 6);
 });
+
+QUnit.test("Life function rejects non-ALIVE and non-DEAD neighbors", function( assert ) {
+	assert.ok( lifeNextCell != undefined );
+	assert.throws(function() { lifeNextCell(['NOPE!']); });
+	assert.throws(function() { lifeNextCell(['a']); });
+	assert.throws(function() { lifeNextCell([1,1,1,0,0,0,1,0,0]); });
+});
