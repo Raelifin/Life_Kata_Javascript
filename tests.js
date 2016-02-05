@@ -17,7 +17,7 @@ const sample8by6BoardAtTime1 = [
 	[d,d,d,a,a,d,d,d],
 	[d,d,d,a,a,d,d,d]];
 
-QUnit.test("Sample board has expected neighborhoods", function( assert ) {
+QUnit.test("Sample board has expected neighborhoods", function(assert) {
 	var neighbors = lifeNeighbors(sample8by6BoardAtTime0,0,0);
 	assert.ok(neighbors.length == 3);
 	assert.ok(neighbors.filter(x=>x==a).length == 2);
@@ -34,9 +34,13 @@ QUnit.test("Sample board has expected neighborhoods", function( assert ) {
 	assert.ok(neighbors.filter(x=>x==d).length == 6);
 });
 
-QUnit.test("Life function rejects non-ALIVE and non-DEAD neighbors", function( assert ) {
+QUnit.test("Life function rejects non-ALIVE and non-DEAD neighbors", function(assert) {
 	assert.ok( lifeNextCell != undefined );
-	assert.throws(function() { lifeNextCell(['NOPE!']); });
-	assert.throws(function() { lifeNextCell(['a']); });
-	assert.throws(function() { lifeNextCell([1,1,1,0,0,0,1,0,0]); });
+	assert.throws(function() { lifeNextCell(a, ['NOPE!']); });
+	assert.throws(function() { lifeNextCell(a, ['a']); });
+	assert.throws(function() { lifeNextCell(a, [1,1,1,0,0,0,1,0,0]); });
+});
+
+QUnit.test("Life function gives correct mapping", function(assert) {
+	assert.ok(lifeNextCell(a, [a,a,d,d,a,d,d,d]) == a);
 });

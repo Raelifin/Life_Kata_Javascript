@@ -8,7 +8,7 @@ function lifeNeighbors(board, x, y) {
 	return validDeltas.map(d => board[y+d[1]][x+d[0]]);
 }
 
-function lifeNextCell(neighbors) {
+function lifeNextCell(oldState, neighbors) {
 	var livingNeighbors = neighbors.filter(function(x){
 		if (x == 'ALIVE') {
 			return true;
@@ -17,4 +17,5 @@ function lifeNextCell(neighbors) {
 		}
 		throw "Unexpected neighbor: "+x;
 	});
+	return 'ALIVE';
 }
