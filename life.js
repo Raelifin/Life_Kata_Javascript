@@ -1,4 +1,10 @@
+
 var lifeStates = ['ALIVE', 'DEAD'];
+
+var lifeRules = {
+	ALIVE: function(neighbors) { return ([2,3].indexOf(neighbors.filter(x=> x == 'ALIVE').length) >= 0 ? 'ALIVE' : 'DEAD'); },
+	DEAD: function(neighbors) { return (neighbors.filter(x=> x == 'ALIVE').length == 3 ? 'ALIVE' : 'DEAD'); },
+};
 
 var lifeNeighborDeltas = [
 	[-1,-1],[+0,-1],[+1,-1],
@@ -11,11 +17,8 @@ function lifeNeighbors(board, x, y) {
 }
 
 function lifeNextCell(oldState, neighbors) {
-	var livingNeighbors = neighbors.filter(x=> x == 'ALIVE');
-	if (oldState == 'ALIVE') {
-		return livingNeighbors.length == 2 || livingNeighbors.length == 3 ? 'ALIVE' : 'DEAD';
-	} else if (oldState == 'DEAD') {
-		return livingNeighbors.length == 3 ? 'ALIVE' : 'DEAD';
+	if (oldState in lifeRules) {
+		return lifeRules[oldState](neighbors);
 	}
 	return oldState;
 }
