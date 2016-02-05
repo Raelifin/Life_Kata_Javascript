@@ -14,4 +14,7 @@ var r = new AutomatonRenderer();
 QUnit.test("Renderer can create automatonBox div with internal elements", function(assert) {
 	$('body').append(r.createAutomatonBox());
 	assert.ok($('#automatonBox').length == 1);
+	assert.ok($('#automatonBox h1').length == 1);
+	assert.ok($('#automatonBox #automatonCells').length == 1);
+	assert.ok($('#automatonBox #resetAutomatonButton').length == 1);
 });
