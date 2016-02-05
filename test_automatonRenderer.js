@@ -11,6 +11,7 @@ var sample8by6BoardAtTime0 = [
 
 var r = new AutomatonRenderer();
 
-QUnit.test("Renderer exists", function(assert) {
-	assert.ok(r!=null);
+QUnit.test("Renderer can create automatonBox div with internal elements", function(assert) {
+	$('body').append(r.createAutomatonBox());
+	assert.ok($('#automatonBox').length == 1);
 });
