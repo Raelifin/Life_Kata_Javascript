@@ -35,4 +35,17 @@ function AutomatonController(automaton) {
 		}
 		$('#automatonBox #automatonCells').append(resultHTML);
 	}
+	
+	this.set = function(board) {
+		$('#automatonBox #automatonCells').empty();
+		var resultHTML = '';
+		for (var y=0; y < board.length; y++) {
+			resultHTML += '<div class="row">';
+			for (var x=0; x < board[y].length; x++) {
+				resultHTML += '<div class="cell automaton_'+board[y][x]+'">'+board[y][x]+'</div>';
+			}
+			resultHTML += '</div>';
+		}
+		$('#automatonBox #automatonCells').append(resultHTML);
+	}
 }
