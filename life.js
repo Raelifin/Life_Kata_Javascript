@@ -11,23 +11,15 @@ function lifeNeighbors(board, x, y) {
 }
 
 function lifeNextCell(oldState, neighbors) {
-	var livingNeighbors = neighbors.filter(function(x){
-		if (lifeStates.indexOf(x) == -1) { throw "Unexpected neighbor: "+x; }
-		return x == 'ALIVE';
-	});
+	var livingNeighbors = neighbors.filter(x=> x == 'ALIVE');
 	if (oldState == 'ALIVE') {
 		return livingNeighbors.length == 2 || livingNeighbors.length == 3 ? 'ALIVE' : 'DEAD';
 	} else if (oldState == 'DEAD') {
 		return livingNeighbors.length == 3 ? 'ALIVE' : 'DEAD';
-	} else {
-		throw "Unexpected previous state: "+oldState;
 	}
+	return oldState;
 }
 
 function lifeNextBoard(board) {
-	var nextBoard = [];
-	for (var y=0; y < board.length; y++) {
-		nextBoard.push(board[y].map((thisCell,i,a)=>lifeNextCell(thisCell,lifeNeighbors(board,i,y))));
-	}
-	return nextBoard;
+	return board.map( (thisRow,y,a1) => thisRow.map( (thisCell,x,a2) => lifeNextCell(thisCell,lifeNeighbors(board,x,y)) ) );
 }
