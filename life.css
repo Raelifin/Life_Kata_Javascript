@@ -1,0 +1,75 @@
+* {
+	margin: 0px;
+}
+
+body {
+	background: #EEF;
+}
+
+#automatonBox {
+	margin: 20px auto;
+	background: #FFF;
+	width: 500px;
+	border-radius: 48px;
+	text-align: center;
+	padding: 32px;
+}
+
+h1 {
+	font-size: 400%;
+	font-family: 'Josefin Sans', sans-serif;
+	letter-spacing: 2.5px;
+	padding-bottom: 16px;
+}
+
+button {
+	background: none;
+	border: none;
+	padding: 8px 16px;
+	margin: 8px;
+	font-size: 200%;
+	font-family: 'Josefin Sans', sans-serif;
+	letter-spacing: 2.5px;
+	cursor: pointer;
+}
+
+#automatonCells {
+	padding: 16px;
+}
+
+.row {
+    height: 48px;
+}
+
+.cell {
+	display: inline-block;
+	
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+  
+    width: 47px;
+    height: 47px;
+	border-left: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	
+	cursor: pointer;
+}
+
+.cell:first-child {
+	border-left: none;
+    padding-left: 1px;
+}
+
+.row:first-child .cell {
+	border-top: none;
+    padding-top: 1px;
+}
+
+.cell.automaton_ALIVE {
+	background: #050;
+}
+
+.cell.automaton_DEAD {
+	background: #FFF;
+}

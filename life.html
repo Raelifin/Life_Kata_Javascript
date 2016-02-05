@@ -4,11 +4,30 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 	<title>Life Kata</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,300" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="life.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<script src="automaton.js"></script>
 	<script src="automatonController.js"></script>
 	<script>
-		//Code eventually goes here.
+		var a = "ALIVE";
+		var d = "DEAD";
+
+		var sample8by6BoardAtTime0 = [
+			[d,d,d,d,d,d,a,d],
+			[a,a,a,d,d,d,a,d],
+			[d,d,d,d,d,d,a,d],
+			[d,d,d,d,d,d,d,d],
+			[d,d,d,a,a,d,d,d],
+			[d,d,d,a,a,d,d,d]];
+			
+		var r = new AutomatonController(conwaysLife, "Conway's Life");
+		
+		$(document).ready(function() {
+			$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
+			$('#automatonBox #stepAutomatonButton').click(function() { r.step(); });
+			$('#automatonBox #resetAutomatonButton').click(function() { r.set(sample8by6BoardAtTime0); });
+		});
 	</script>
 </head>
 <body></body>
