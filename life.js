@@ -17,5 +17,11 @@ function lifeNextCell(oldState, neighbors) {
 		}
 		throw "Unexpected neighbor: "+x;
 	});
-	return 'ALIVE';
+	if (oldState == 'ALIVE') {
+		return livingNeighbors.length == 2 || livingNeighbors.length == 3 ? 'ALIVE' : 'DEAD';
+	} else if (oldState == 'DEAD') {
+		return livingNeighbors.length == 3 ? 'ALIVE' : 'DEAD';
+	} else {
+		throw "Unexpected previous state: "+oldState;
+	}
 }

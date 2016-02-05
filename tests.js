@@ -43,4 +43,11 @@ QUnit.test("Life function rejects non-ALIVE and non-DEAD neighbors", function(as
 
 QUnit.test("Life function gives correct mapping", function(assert) {
 	assert.ok(lifeNextCell(a, [a,a,d,d,a,d,d,d]) == a);
+	assert.ok(lifeNextCell(d, [a,a,d,d,a,d,d,d]) == a);
+	assert.ok(lifeNextCell(a, [d,d,d,d,a,d,d,a]) == a);
+	assert.ok(lifeNextCell(d, [d,d,d,d,a,d,d,a]) == d);
+	assert.ok(lifeNextCell(a, [d,d,d,d,a,d,d,d]) == d);
+	assert.ok(lifeNextCell(d, [d,d,d,d,a,d,d,d]) == d);
+	assert.ok(lifeNextCell(a, [a,a,a,a,a,d,d,d]) == d);
+	assert.ok(lifeNextCell(d, [a,a,a,a,a,d,d,d]) == d);
 });
