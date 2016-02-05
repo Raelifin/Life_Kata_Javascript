@@ -72,3 +72,22 @@ QUnit.test("ResetAutomation button works", function(assert) {
 	
 	$('#automatonBox').remove();
 });
+
+QUnit.test("Cells flip when clicked", function(assert) {
+	r.createAutomatonBox(sample8by6BoardAtTime0, 'body');
+	
+	$('#automatonBox .cell').click();
+	$('#automatonBox .row').each(function(y) {
+		$(this).children('.cell').each(function(x) {
+			assert.ok($(this).html() != sample8by6BoardAtTime0[y][x]);
+		});
+	});
+	$('#automatonBox .cell').click();
+	$('#automatonBox .row').each(function(y) {
+		$(this).children('.cell').each(function(x) {
+			assert.equal($(this).html(), sample8by6BoardAtTime0[y][x]);
+		});
+	});
+	
+	$('#automatonBox').remove();
+});

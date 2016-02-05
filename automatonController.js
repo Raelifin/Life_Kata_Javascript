@@ -1,3 +1,12 @@
+//Helper function
+function getObjKeys(o) {
+	var result = [];
+	for (var k in o) {
+		result.push(k);
+	}
+	return result;
+}
+
 function AutomatonController(automaton, name) {
 	this.automaton = automaton;
 	
@@ -6,20 +15,32 @@ function AutomatonController(automaton, name) {
 	}
 	
 	this.createAutomatonBox = function(board, containerSelector) {
+		var self = this;
 		var resultHTML = '<div id="automatonBox">';
 		resultHTML += '<h1>'+name+'</h1>';
-		resultHTML += '<div id="automatonCells">'+this.generateBoardHTML(board)+'</div>';
+		resultHTML += '<div id="automatonCells"></div>';
 		resultHTML += '<button id="resetAutomatonButton">Reset</button>';
 		resultHTML += '<button id="stepAutomatonButton">Step</button>';
 		resultHTML += '</div>';
 		$(containerSelector).first().append(resultHTML);
-		$('#automatonBox #stepAutomatonButton').click(function() { r.step(); });
-		$('#automatonBox #resetAutomatonButton').click(function() { r.set(board); });
+		this.set(board);
+		$('#automatonBox #stepAutomatonButton').click(function() { self.step(); });
+		$('#automatonBox #resetAutomatonButton').click(function() { self.set(board); });
 	}
 	
 	this.set = function(board) {
 		$('#automatonBox #automatonCells').empty();
 		$('#automatonBox #automatonCells').append(this.generateBoardHTML(board));
+		$('#automatonBox .cell').click(function() {
+			$(this).removeClass('automaton_'+$(this).html());
+			var states = getObjKeys(automaton.rules);
+			var index = states.indexOf($(this).html());
+			if (index >= 0) {
+				var newState = states[(index+1)%states.length];
+				$(this).html(newState);
+				$(this).addClass('automaton_'+newState);
+			}
+		});
 	}
 	
 	this.step = function() {
