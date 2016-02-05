@@ -1,4 +1,4 @@
-function Automata2D(rules) {
+function Automaton2D(rules) {
 	this.rules = rules;
 	
 	var neighborDeltas = [
@@ -19,7 +19,7 @@ function Automata2D(rules) {
 	}
 }
 
-var conwaysLife = new Automata2D({
+var conwaysLife = new Automaton2D({
 	ALIVE: function(neighbors) { return ([2,3].indexOf(neighbors.filter(x=> x == 'ALIVE').length) >= 0 ? 'ALIVE' : 'DEAD'); },
 	DEAD: function(neighbors) { return (neighbors.filter(x=> x == 'ALIVE').length == 3 ? 'ALIVE' : 'DEAD'); },
 });
