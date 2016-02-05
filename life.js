@@ -1,6 +1,3 @@
-
-var lifeStates = ['ALIVE', 'DEAD'];
-
 var lifeRules = {
 	ALIVE: function(neighbors) { return ([2,3].indexOf(neighbors.filter(x=> x == 'ALIVE').length) >= 0 ? 'ALIVE' : 'DEAD'); },
 	DEAD: function(neighbors) { return (neighbors.filter(x=> x == 'ALIVE').length == 3 ? 'ALIVE' : 'DEAD'); },
