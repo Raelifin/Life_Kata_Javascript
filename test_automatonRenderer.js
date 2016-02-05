@@ -28,11 +28,12 @@ QUnit.test("Box header is labeled \"Conway's Life\"", function(assert) {
 	$('#automatonBox').remove();
 });
 
-QUnit.test("AutomatonBox has cells with correct content", function(assert) {
+QUnit.test("AutomatonBox has cells with correct content and class", function(assert) {
 	$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
 	$('#automatonBox .row').each(function(y) {
 		$(this).children('.cell').each(function(x) {
 			assert.ok($(this).html() == sample8by6BoardAtTime0[y][x]);
+			assert.ok($(this).hasClass('automaton_'+sample8by6BoardAtTime0[y][x]));
 		});
 	});
 	$('#automatonBox').remove();

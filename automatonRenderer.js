@@ -6,9 +6,7 @@ function AutomatonController() {
 		for (var y=0; y < board.length; y++) {
 			resultHTML += '<div class="row">';
 			for (var x=0; x < board[y].length; x++) {
-				resultHTML += '<div class="cell">';
-				resultHTML += board[y][x];
-				resultHTML += '</div>';
+				resultHTML += '<div class="cell automaton_'+board[y][x]+'">'+board[y][x]+'</div>';
 			}
 			resultHTML += '</div>';
 		}
