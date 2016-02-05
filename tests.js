@@ -54,3 +54,12 @@ QUnit.test("Life function gives correct mapping", function(assert) {
 	assert.ok(lifeNextCell(a, [a,a,a,a,a,d,d,d]) == d);
 	assert.ok(lifeNextCell(d, [a,a,a,a,a,d,d,d]) == d);
 });
+
+QUnit.test("Next board function gives correct mapping on sample 8x6 input", function(assert) {
+	var nextBoard = lifeNextBoard(sample8by6BoardAtTime0);
+	for (var y=0; y < 6; y++) {
+		for (var x=0; x < 8; x++) {
+			assert.ok(nextBoard[y][x] == sample8by6BoardAtTime1[y][x]);
+		}
+	}
+});

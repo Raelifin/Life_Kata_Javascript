@@ -25,3 +25,11 @@ function lifeNextCell(oldState, neighbors) {
 		throw "Unexpected previous state: "+oldState;
 	}
 }
+
+function lifeNextBoard(board) {
+	var nextBoard = [];
+	for (var y=0; y < board.length; y++) {
+		nextBoard.push(board[y].map((thisCell,i,a)=>lifeNextCell(thisCell,lifeNeighbors(board,i,y))));
+	}
+	return nextBoard;
+}
