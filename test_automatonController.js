@@ -12,9 +12,7 @@ var sample8by6BoardAtTime0 = [
 var r = new AutomatonController(conwaysLife, "Conway's Life");
 
 QUnit.test("Renderer can create automatonBox div with internal elements", function(assert) {
-	$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
-	$('#automatonBox #stepAutomatonButton').click(function() { r.step(); });
-	$('#automatonBox #resetAutomatonButton').click(function() { r.set(sample8by6BoardAtTime0); });
+	r.createAutomatonBox(sample8by6BoardAtTime0, 'body');
 	
 	assert.equal($('#automatonBox').length, 1);
 	assert.equal($('#automatonBox h1').length, 1);
@@ -28,19 +26,13 @@ QUnit.test("Renderer can create automatonBox div with internal elements", functi
 });
 
 QUnit.test("Box header is labeled \"Conway's Life\"", function(assert) {
-	$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
-	$('#automatonBox #stepAutomatonButton').click(function() { r.step(); });
-	$('#automatonBox #resetAutomatonButton').click(function() { r.set(sample8by6BoardAtTime0); });
-	
+	r.createAutomatonBox(sample8by6BoardAtTime0, 'body');
 	assert.equal($('#automatonBox h1').html(), 'Conway\'s Life');
-	
 	$('#automatonBox').remove();
 });
 
 QUnit.test("AutomatonBox has cells with correct content and class", function(assert) {
-	$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
-	$('#automatonBox #stepAutomatonButton').click(function() { r.step(); });
-	$('#automatonBox #resetAutomatonButton').click(function() { r.set(sample8by6BoardAtTime0); });
+	r.createAutomatonBox(sample8by6BoardAtTime0, 'body');
 	
 	$('#automatonBox .row').each(function(y) {
 		$(this).children('.cell').each(function(x) {
@@ -53,9 +45,7 @@ QUnit.test("AutomatonBox has cells with correct content and class", function(ass
 });
 
 QUnit.test("StepAutomaton button works", function(assert) {
-	$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
-	$('#automatonBox #stepAutomatonButton').click(function() { r.step(); });
-	$('#automatonBox #resetAutomatonButton').click(function() { r.set(sample8by6BoardAtTime0); });
+	r.createAutomatonBox(sample8by6BoardAtTime0, 'body');
 	
 	$('#automatonBox #stepAutomatonButton').click();
 	$('#automatonBox .row').each(function(y) {
@@ -68,9 +58,7 @@ QUnit.test("StepAutomaton button works", function(assert) {
 });
 
 QUnit.test("ResetAutomation button works", function(assert) {
-	$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
-	$('#automatonBox #stepAutomatonButton').click(function() { r.step(); });
-	$('#automatonBox #resetAutomatonButton').click(function() { r.set(sample8by6BoardAtTime0); });
+	r.createAutomatonBox(sample8by6BoardAtTime0, 'body');
 	
 	$('#automatonBox #stepAutomatonButton').click();
 	$('#automatonBox #stepAutomatonButton').click();
