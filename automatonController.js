@@ -1,22 +1,23 @@
-function AutomatonController(automaton) {
+function AutomatonController(automaton, name) {
 	this.automaton = automaton;
+	
+	this.generateBoardHTML = function(board) {
+		return board.map(r => '<div class="row">'+r.map(c=>'<div class="cell automaton_'+c+'">'+c+'</div>').join('')+'</div>').join('');
+	}
 	
 	this.createAutomatonBox = function(board) {
 		var resultHTML = '<div id="automatonBox">';
-		resultHTML += '<h1>Conway\'s Life</h1>';
-		resultHTML += '<div id="automatonCells">';
-		for (var y=0; y < board.length; y++) {
-			resultHTML += '<div class="row">';
-			for (var x=0; x < board[y].length; x++) {
-				resultHTML += '<div class="cell automaton_'+board[y][x]+'">'+board[y][x]+'</div>';
-			}
-			resultHTML += '</div>';
-		}
-		resultHTML += '</div>';
+		resultHTML += '<h1>'+name+'</h1>';
+		resultHTML += '<div id="automatonCells">'+this.generateBoardHTML(board)+'</div>';
 		resultHTML += '<button id="resetAutomatonButton">Reset</button>';
 		resultHTML += '<button id="stepAutomatonButton">Step</button>';
 		resultHTML += '</div>';
 		return resultHTML;
+	}
+	
+	this.set = function(board) {
+		$('#automatonBox #automatonCells').empty();
+		$('#automatonBox #automatonCells').append(this.generateBoardHTML(board));
 	}
 	
 	this.step = function() {
@@ -24,28 +25,6 @@ function AutomatonController(automaton) {
 			return [$(this).children('.cell').map(function(x) { return $(this).html(); }).get()];
 		}).get();
 		$('#automatonBox #automatonCells').empty();
-		board = this.automaton.nextBoard(board);
-		var resultHTML = '';
-		for (var y=0; y < board.length; y++) {
-			resultHTML += '<div class="row">';
-			for (var x=0; x < board[y].length; x++) {
-				resultHTML += '<div class="cell automaton_'+board[y][x]+'">'+board[y][x]+'</div>';
-			}
-			resultHTML += '</div>';
-		}
-		$('#automatonBox #automatonCells').append(resultHTML);
-	}
-	
-	this.set = function(board) {
-		$('#automatonBox #automatonCells').empty();
-		var resultHTML = '';
-		for (var y=0; y < board.length; y++) {
-			resultHTML += '<div class="row">';
-			for (var x=0; x < board[y].length; x++) {
-				resultHTML += '<div class="cell automaton_'+board[y][x]+'">'+board[y][x]+'</div>';
-			}
-			resultHTML += '</div>';
-		}
-		$('#automatonBox #automatonCells').append(resultHTML);
+		this.set(this.automaton.nextBoard(board));
 	}
 }

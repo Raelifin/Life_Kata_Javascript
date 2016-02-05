@@ -9,7 +9,7 @@ var sample8by6BoardAtTime0 = [
 	[d,d,d,a,a,d,d,d],
 	[d,d,d,a,a,d,d,d]];
 
-var r = new AutomatonController(conwaysLife);
+var r = new AutomatonController(conwaysLife, "Conway's Life");
 
 QUnit.test("Renderer can create automatonBox div with internal elements", function(assert) {
 	$('body').append(r.createAutomatonBox(sample8by6BoardAtTime0));
