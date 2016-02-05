@@ -1,7 +1,7 @@
-const a = "ALIVE";
-const d = "DEAD";
+var a = "ALIVE";
+var d = "DEAD";
 
-const sample8by6BoardAtTime0 = [
+var sample8by6BoardAtTime0 = [
 	[d,d,d,d,d,d,a,d],
 	[a,a,a,d,d,d,a,d],
 	[d,d,d,d,d,d,a,d],
@@ -9,7 +9,7 @@ const sample8by6BoardAtTime0 = [
 	[d,d,d,a,a,d,d,d],
 	[d,d,d,a,a,d,d,d]];
 	
-const sample8by6BoardAtTime1 = [
+var sample8by6BoardAtTime1 = [
 	[d,a,d,d,d,d,d,d],
 	[d,a,d,d,d,a,a,a],
 	[d,a,d,d,d,d,d,d],
